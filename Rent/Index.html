@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxiwala</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    <!---header-->
+    <header>
+        <a href="index.html" class="logo"><img src="pictures/img/logot1.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul  class="navbar">
+        <li><a href="../main/index.html">HOME</a></li>
+        <li><a href="../rent/Index.html">Rent</a></li>
+        <li><a href="index.html">OutStation</a></li>
+        <li><a href="index.html">InCity</a></li>
+        <li><a href="index.html">Reviews</a></li>
+        </ul>
+        <div class="header-btn">
+            <a href="login/signup.html" class="sign-up">Sign Up</a>
+            <a href="login/Login.html" class="sign-in">Sign In</a>
+        </div>
+    </header>
+
+    <form>
+        <label for="vehicle-type">Select a vehicle type:</label>
+        <select id="vehicle-type" name="vehicle-type" onchange="showOptions()">
+          <option value="">Select a type</option>
+          <option value="car">Car</option>
+          <option value="bike">Bike</option>
+          <option value="bus">Bus</option>
+          <option value="tempo">Tempo</option>
+        </select>
+      
+        <div id="car-options" style="display:none;">
+          <label for="car-type">Select a car type:</label>
+          <select id="car-type" name="car-type">
+            <option value="">Select a type</option>
+            <option value="hatchback">Hatchback</option>
+            <option value="sedan">Sedan</option>
+            <option value="suv">SUV</option>
+          </select>
+        </div>
+      
+        <div id="bike-options" style="display:none;">
+          <label for="bike-type">Select a bike type:</label>
+          <select id="bike-type" name="bike-type">
+            <option value="">Select a type</option>
+            <option value="scooter">Scooter</option>
+            <option value="scooty">Scooty</option>
+            <option value="motorcycle">Motorcycle</option>
+            <option value="sports-bike">Sports Bike</option>
+          </select>
+        </div>
+      
+        <div id="bus-options" style="display:none;">
+          <label for="bus-type">Select a bus type:</label>
+          <select id="bus-type" name="bus-type">
+            <option value="">Select a type</option>
+            <option value="traveller">Traveller</option>
+            <option value="mini-bus">Mini Bus</option>
+            <option value="bus">Bus</option>
+          </select>
+        </div>
+      
+        <button type="submit">Submit</button>
+      </form>
+      
+      <script>
+        function showOptions() {
+          var vehicleType = document.getElementById("vehicle-type").value;
+          if (vehicleType === "car") {
+            document.getElementById("car-options").style.display = "block";
+            document.getElementById("bike-options").style.display = "none";
+            document.getElementById("bus-options").style.display = "none";
+          } else if (vehicleType === "bike") {
+            document.getElementById("car-options").style.display = "none";
+            document.getElementById("bike-options").style.display = "block";
+            document.getElementById("bus-options").style.display = "none";
+          } else if (vehicleType === "bus") {
+            document.getElementById("car-options").style.display = "none";
+            document.getElementById("bike-options").style.display = "none";
+            document.getElementById("bus-options").style.display = "block";
+          } else {
+            document.getElementById("car-options").style.display = "none";
+            document.getElementById("bike-options").style.display = "none";
+            document.getElementById("bus-options").style.display = "none";
+          }
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+    <section>
+    <div class="local-btn">
+        <a href="rental.html" class="Inc-btn">Driver Included</a>
+        <a href="selfdrive.html" class="Exc-btn">Driver Excluded</a>
+    </div>
+    </section>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyDkMyBd3KZCY2_mfUamOdek84qwnqePsTw",
+          authDomain: "taxiwala-d4490.firebaseapp.com",
+          projectId: "taxiwala-d4490",
+          storageBucket: "taxiwala-d4490.appspot.com",
+          messagingSenderId: "426213086283",
+          appId: "1:426213086283:web:acb6b288735cecfae0e9ce",
+          measurementId: "G-0CFWM51FJ9"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>

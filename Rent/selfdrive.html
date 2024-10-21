@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $("form").submit(function(event) {
+          event.preventDefault();
+          var location = $("#location").val();
+          var budget = $("#budget").val();
+          var seatingCapacity = $("#seating-capacity").val();
+          $.ajax({
+            url: "get_cars.php",
+            type: "POST",
+            data: {
+              location: location,
+              budget: budget,
+              seating_capacity: seatingCapacity
+            },
+            success: function(data) {
+              $("#car-results").html(data);
+            }
+          });
+        });
+
+        // add event listener to budget input
+        $("#budget").on("input", function() {
+          var budget = $(this).val();
+          $("#budget-price").text("Rs." + budget);
+        });
+      });
+    </script>
+</head>
+<body>
+    <!--header-->
+    <header>
+        <a href="index.html" class="logo"><img src="pictures/img/logot1.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul  class="navbar">
+        <li><a href="../main/index.html">HOME</a></li>
+        <li><a href="Index.html">Rent</a></li>
+        <li><a href="index.html">OutStation</a></li>
+        <li><a href="index.html">InCity</a></li>
+        <li><a href="index.html">Reviews</a></li>
+        </ul>
+        <div class="header-btn">
+            <a href="login/signup.html" class="sign-up">Sign Up</a>
+            <a href="login/Login.html" class="sign-in">Sign In</a>
+        </div>
+    </header>
+    <section>
+        <h1>Car Rental Page</h1>
+
+        <form>
+          <label for="location">Location:</label>
+          <select id="location" name="location">
+            <option value="anywhere">Anywhere</option>
+            <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Bengaluru">Bengaluru</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Pune">Pune</option>
+          <option value="Ahmedabad">Ahmedabad</option>
+          <option value="Kolkata">Kolkata</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Indore">Indore</option>
+          <option value="Bhopal">Bhopal</option>
+          <option value="Nagpur">Nagpur</option>
+          <option value="Surat">Surat</option>
+          <option value="Vadodara">Vadodara</option>
+          <option value="Ludhiana">Ludhiana</option>
+          <option value="Agra">Agra</option>
+          <option value="Nashik">Nashik</option>
+          <option value="Kanpur">Kanpur</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Visakhapatnam">Visakhapatnam</option>
+          <option value="Faridabad">Faridabad</option>
+          <option value="Meerut">Meerut</option>
+          <option value="Noida">Noida</option>
+          <option value="Ghaziabad">Ghaziabad</option>
+          </select>
+    
+          <br><br>
+    
+          <label for="budget">Budget:</label>
+          <input type="range" id="budget" name="budget" min="900" max="3000" step="10">
+          <span id="budget-price">Rs.0</span>
+    
+          <br><br>
+    
+          <label for="seating-capacity">Seating Capacity:</label>
+          <select id="seating-capacity" name="seating-capacity">
+            <option value="any">Any</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+          </select>
+    
+          <br><br>
+    
+          <button type="submit">Search</button>
+        </form>
+    
+        <h2>Available Cars:</h2>
+    
+        <div id="car-results"></div>
+    </section>
+</body>
+</html>
